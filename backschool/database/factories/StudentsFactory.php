@@ -18,12 +18,13 @@ class StudentsFactory extends Factory
     {
         return [
             'nombre' => fake()->name(),
+            'carrera' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'imagen' => null ,
             'direccion' => fake()->address(),
             'telefono' => fake()->phoneNumber(),
             'edad' => fake()->numberBetween(18, 25),
-            'cuatrimestre' => fake()->numberBetween(1, 8),
+            'cuatrimestre' => fake()->numberBetween(1, 9),
             'genero' => fake()->randomElement(['masculino', 'femenino']),
         ];
     }

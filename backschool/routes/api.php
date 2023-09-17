@@ -24,5 +24,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout']);
     Route::post('/registro', [RegisteredUserController::class, 'store']);
     Route::apiResource('/estudiantes', StudentsController::class);
+    
 });
 

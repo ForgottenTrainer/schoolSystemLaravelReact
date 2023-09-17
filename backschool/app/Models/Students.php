@@ -18,5 +18,6 @@ class Students extends Model
         'telefono',
         'cuatrimestre',
         'genero',
+        'carrera',
     ];
 }

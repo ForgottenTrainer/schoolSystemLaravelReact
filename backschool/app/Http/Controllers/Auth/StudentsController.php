@@ -29,7 +29,7 @@ class StudentsController extends Controller
     public function store(StoreStudentsRequest $request)
     {
         $data = $request->validated();
-        $students = Students::create();
+        $students = Students::create($data);
 
         return response (new StudentsResource($students), 201);
     }
@@ -48,18 +48,24 @@ class StudentsController extends Controller
         return new StudentsResource($student);
     }
     
-    
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateStudentsRequest $request, Students $students)
+    public function update(UpdateStudentsRequest $request, Students $students, $id)
     {
-        $data = $request->validated();
-        $students->update($data);
-        return new StudentsResource($students);
+        $data = $request->validate([
+            'nombre' => 'required|string',
+            'edad' => 'required|integer',
+            'carrera' => 'required',
+            'imagen' => 'nullable|string',
+            'email' => 'required|email',
+            'direccion' => 'nullable|string',
+            'telefono' => 'nullable|string',
+            'cuatrimestre' => 'nullable|string',
+            'genero' => 'nullable|string'
+        ]);
+        $student = Students::findOrFail($request->id); // Cambio aquí: Se asigna el resultado a $student
+        $student->update($data);
 
+        return response (new StudentsResource($students), 201);
     }
-
     /**
      * Remove the specified resource from storage.
      */

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('cuatrimestre');
+            $table->string('carrera');
             $table->string('genero');
             $table->timestamps();
         });

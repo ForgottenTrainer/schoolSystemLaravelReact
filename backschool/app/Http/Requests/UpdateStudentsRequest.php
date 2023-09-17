@@ -25,8 +25,9 @@ class UpdateStudentsRequest extends FormRequest
         return [
             'nombre' => 'required|string|max:255',
             'edad' => 'required',
+            'carrera' => 'required',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'email' => 'required|string|email|max:255|unique:students,'.$this->id,
+            'email' => 'required|string|email|max:255|unique:students,email,'.$this->id,
             'direccion' => 'nullable|string|max:255',
             'telefono' => 'nullable|string|max:15',
             'cuatrimestre' => 'nullable|integer|min:1|max:8',

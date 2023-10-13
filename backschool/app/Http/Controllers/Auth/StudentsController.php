@@ -19,7 +19,7 @@ class StudentsController extends Controller
         //
         return StudentsResource::collection(Students::query()
         ->orderBy('id', 'desc')
-        ->paginate(10)
+        ->get()
         );
     }
 
